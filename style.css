@@ -1,0 +1,30 @@
+header {
+    position: fixed;
+    opacity: 50%;
+    background-color: blue;
+    font-family: cursive;
+    font-size: x-large;
+    text-align: center;
+}
+header a {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+
+nav {
+    margin: auto;
+    text-align: center;
+
+}
+article img {
+    width: 200px;
+    height: 200px;
+}
+
+main {
+    text-align: center;
+}
+body {
+    background-color: rgb(48, 240, 105);
+}
