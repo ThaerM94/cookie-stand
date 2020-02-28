@@ -1,17 +1,16 @@
 'use strict';
-function getRandomInt(){
-var custNum=0;
-min = Math.ceil(min);
-max = Math.floor(max);
-return Math.floor(Math.random() * (max - min)) + min;
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 var hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 var container = document.getElementById('result');
 var table1=document.createElement('table');
 var total=0;
 var custNum=0;
-var shops=[];
-
+   var shops=[];
 function shop (name,minCust,maxCust,avgCust){
     this.name=name;
     this.minCust=minCust;
@@ -21,7 +20,6 @@ function shop (name,minCust,maxCust,avgCust){
     this.total=0;
     this.printArray=[];
     shops.push(this);
-
 }
 shop.prototype.getCustNum = function (min , max){
     this.custNum =getRandomInt(min, max);
@@ -30,17 +28,14 @@ shop.prototype.getCustNum = function (min , max){
 shop.prototype.numCookies =function(){
     
     for (var i=0;i<hours.length;i++){
-        
         this.getCustNum(this.minCust,this.maxCust);
         // var randomNum= this.getCustNum(this.minCust,this.maxCust);
         // console.log(this.custNum);
         var cookiesPerH=Math.ceil(this.custNum*this.avgCust);
-        this.total+=this.cookiesPerH
         this.printArray.push(cookiesPerH);
+        this.total+=cookiesPerH;
+
     }
-
-
-       
 }
 
 shop.prototype.render =function(){
@@ -58,11 +53,10 @@ shop.prototype.render =function(){
     var tdt = document.createElement('td');
     tr2.appendChild(tdt)
     tdt.textContent=this.total;
+
 }
 
 
- var container = document.getElementById('result');
- var table1=document.createElement('table');
 
  function header (){
         container.appendChild(table1);
@@ -81,8 +75,12 @@ shop.prototype.render =function(){
         myCookies = document.createElement('th');
         tr1.appendChild(myCookies);
         myCookies.textContent = "Daily location total";
-     }
-     header();
+    }
+    header();
+
+
+
+
 
 var seattle = new shop ('Seattle',23,65,6.3);
 var tokyo = new shop('Tokya',3,24,1.2);
@@ -119,4 +117,3 @@ totalAll.appendChild(td7);
 td7.textContent=`${totalOfTotal}.`;
 }
 footer();
-
