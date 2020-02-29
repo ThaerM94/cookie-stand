@@ -93,7 +93,7 @@ for (var i =0;i<shops.length;i++){
     shops[i].numCookies();
     shops[i].render();
 }
- 
+footer();
 
 function footer (){
     var totalOfTotal=0;
@@ -102,6 +102,7 @@ table1.appendChild(totalAll);
 var td3 =document.createElement('td');
 totalAll.appendChild(td3);
 td3.textContent='Total';
+
 for(var i=0;i<hours.length;i++){
     var hourTotal=0; 
     for (var t=0;t<shops.length;t++){
@@ -116,4 +117,28 @@ var td7 =document.createElement('td');
 totalAll.appendChild(td7);
 td7.textContent=`${totalOfTotal}.`;
 }
-footer();
+
+var form = document.getElementById('newForm');
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    
+
+    var inputLocation = event.target.location.value;
+    var inputMaximum = parseInt( event.target.max.value);
+    var inputMinimum = parseInt( event.target.min.value);
+    var inputAVG = parseFloat( event.target.avg.value);
+    console.log(inputAVG);
+    if(inputMaximum > inputMinimum){
+
+    table1.removeChild(table1.lastChild);
+    var objForm = new shop (inputLocation ,inputMaximum, inputMinimum, inputAVG, []);
+    console.log(objForm);
+    objForm.numCookies();
+    objForm.render();
+
+    footer();}
+
+    else
+     alert('The number of minimum must be less than maximum');
+
+});
