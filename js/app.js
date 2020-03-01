@@ -93,6 +93,8 @@ for (var i =0;i<shops.length;i++){
     shops[i].numCookies();
     shops[i].render();
 }
+// shop.prototype.render();
+// header();
 footer();
 
 function footer (){
